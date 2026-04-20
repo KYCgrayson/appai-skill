@@ -1,0 +1,17 @@
+{
+  "name": "appai-skill",
+  "owner": {
+    "name": "AppAI",
+    "url": "https://appai.info"
+  },
+  "description": "Official Claude Code skills for AppAI — publish landing pages via API",
+  "plugins": [
+    {
+      "name": "appai-publish",
+      "source": "./skills/appai-publish",
+      "description": "Publish production-quality landing pages on AppAI (appai.info). Handles auth, multi-language, SEO, and privacy/terms automatically.",
+      "version": "0.1.0",
+      "homepage": "https://appai.info"
+    }
+  ]
+}
