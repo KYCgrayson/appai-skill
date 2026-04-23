@@ -1,6 +1,6 @@
 # Section Library
 
-22 section types. Pick 4–8 per page. Order them via `order` field (ascending).
+23 section types. Pick 4–8 per page. Order them via `order` field (ascending).
 
 ## Hero variants
 
@@ -36,10 +36,15 @@ Fields: `headline`, `subheadline`, `cta` ({text, url}), `secondaryCta`, `heroIma
 | `newsletter` | Email signup |
 | `divider` | Visual break |
 | `media-downloader` | Video downloader widget (for media tools) |
+| `embed` | TikTok / Loom / YouTube / Vimeo / Spotify / CodePen / Figma / X / Instagram (auto-detects provider from URL) |
 
 ## Per-section styling
 
 Every section accepts `data.backgroundColor` (hex) to create visual rhythm across the page. Alternate light/dark in consumer pages; stay consistent in minimal brands.
+
+## Link rel (SEO)
+
+`links` and `cta` sections accept an optional `rel` string on each link. Use `"nofollow"` for affiliate/sponsored/user-submitted links, `"sponsored"` for paid placements. Default (unset) = standard external dofollow (`rel="noopener noreferrer"`). This matters for Google's link spam policy — mark affiliate links or Google will.
 
 ## Minimum viable page
 

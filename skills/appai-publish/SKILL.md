@@ -71,7 +71,7 @@ Returns the page object with URL `https://appai.info/p/{slug}`.
 | `themeColor` | See references/design.md — map from product category |
 | `fontFamily` | Google Font matching the product tone — see references/design.md |
 | `darkMode` | true for dev tools, gaming, AI/tech; false for consumer, health, food |
-| Sections | See references/sections.md — 22 types available |
+| Sections | See references/sections.md — 23 types available (inc. embed for TikTok/Loom/X/Spotify/CodePen/Figma) |
 | `privacyPolicy` / `termsOfService` | Generate from context. Always include them unless user says otherwise |
 | `metaTitle` / `metaDescription` | Write SEO-optimized copy; don't leave blank |
 
