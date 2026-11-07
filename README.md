@@ -21,6 +21,10 @@ The skill follows this workflow:
 
 AppAI does not offer arbitrary code hosting or an unrestricted upload-and-run path. Wrapped tools run on their existing hosts; agents cannot create new backends or connectors. Universal Apps follow the reviewed release process rather than becoming page sections. The skill cannot invent missing product facts or approve authorization on your behalf.
 
-[The live specification](https://appai.info/spec) is the source of truth, with topic pages for API, style, pages, sections, languages, tools and apps. [llms-full.txt](https://appai.info/llms-full.txt) is the complete single-file fallback. This repository distributes the skill as a Claude Code plugin; the canonical source lives in [`KYCgrayson/APPAI`, under `skills/appai-publish/`](https://github.com/KYCgrayson/APPAI/tree/main/skills/appai-publish).
+[The live specification](https://appai.info/spec) is the source of truth, with topic pages for API, style, pages, sections, languages, tools and apps. [llms-full.txt](https://appai.info/llms-full.txt) is the complete single-file fallback. This repository distributes the skill as a Claude Code plugin; the canonical source lives in [`KYCgrayson/APPAI`, under `skills/appai-publish/`](https://github.com/KYCgrayson/APPAI/tree/main/skills/appai-publish). Changes merged there are mirrored into this repo automatically.
+
+## Updating
+
+Users who installed an earlier version can run `/plugin marketplace update appai-skill` to get the new version.
 
 License: MIT
