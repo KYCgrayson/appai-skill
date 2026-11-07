@@ -4,13 +4,13 @@
     "name": "AppAI",
     "url": "https://appai.info"
   },
-  "description": "Official Claude Code skills for AppAI — publish landing pages via API",
+  "description": "Start at https://appai.info/spec \u2014 official AppAI skill for hosted pages, tools, and Universal Apps.",
   "plugins": [
     {
       "name": "appai-publish",
       "source": "./skills/appai-publish",
-      "description": "Publish production-quality landing pages on AppAI (appai.info). Handles auth, multi-language, SEO, and privacy/terms automatically.",
-      "version": "0.1.0",
+      "description": "Start at https://appai.info/spec \u2014 publish Hosted Pages, Wrapped tools, Connected tools, and reviewed Universal Apps with user-approved device authorization and page dry-run validation.",
+      "version": "0.2.0",
       "homepage": "https://appai.info"
     }
   ]

@@ -1,45 +1,30 @@
 # AppAI Skills for Claude Code
 
-Official Claude Code plugin for [AppAI](https://appai.info) — a free hosting platform for AI-built landing pages.
+The official AppAI plugin starts at [https://appai.info/spec](https://appai.info/spec) and helps publish Hosted Pages, Wrapped tools, Connected tools, and reviewed Universal Apps.
 
-## What you get
+In a Claude Code session, install with:
 
-**`appai-publish`** — A skill that teaches Claude Code how to publish production-quality landing pages via the AppAI API. Handles:
-
-- Device-flow authentication (no API keys to paste)
-- 22 section types, 5 templates, 17 categories
-- Multi-language publishing (30+ locales, free, unlimited)
-- Automatic SEO, schema.org, sitemap, hreflang
-- Privacy policy and terms of service generation
-- Preview-before-publish validation
-
-## Install
-
-In any Claude Code session:
-
-```
+```text
 /plugin marketplace add KYCgrayson/appai-skill
 /plugin install appai-publish@appai-skill
 ```
 
-Then ask Claude anything like:
+Then ask, for example: "Publish a landing page for my recipe app, aimed at home cooks."
 
-> "Publish a landing page for my AI recipe app — it's called ChefChef, targets home cooks, available on iOS and Android."
+The skill follows this workflow:
 
-Claude will run the device-auth flow in your browser, design the page, generate copy, and publish it to `https://appai.info/p/<slug>` in one shot.
+1. Choose the simplest use-case that meets your needs, using your product description and audience.
+2. Reuse a securely stored API key or start device authorization. The agent prints the verification link and the returned `user_code` so you can compare it with the approval page, and opens the link in your own browser when possible. You sign in with Google if asked, check that the code matches, and click **Approve**. The agent never approves for you or asks you to paste a key. Keys stay in memory or outside the project.
+3. For a Hosted Page, read the style and logo guidance, choose a style kit and preset, and build copy and sections from current schemas. Hosted Pages are always published in four locales: English (`en`), Traditional Chinese (`zh-TW`), Simplified Chinese (`zh-CN`) and Spanish (`es`). Publish all four without asking the user. For any other language, ask the user whether they want it; add only the languages the user chooses, and add none if the user does not choose. Do not wait for that answer before publishing the four. Add metadata and compliance content using the specification.
+4. Dry-run the page, address validation issues, and publish the same validated body. Open and check the live page at `https://appai.info/p/{slug}`, then iterate with your feedback.
+5. For tools, wrap the existing deployment and use an existing owner-maintained connector when needed. For a Universal App, prepare a manifest and immutable source package, submit for AppAI review, and poll the release. Launch at `https://appai.info/app/{appId}` only once the release is approved and the production deployment is active.
 
-## What the skill does for you
+AppAI does not offer arbitrary code hosting or an unrestricted upload-and-run path. Wrapped tools run on their existing hosts; agents cannot create new backends or connectors. Universal Apps follow the reviewed release process rather than becoming page sections. The skill cannot invent missing product facts or approve authorization on your behalf.
 
-1. Authenticates the first time (opens browser, you click Authorize, agent takes it from there)
-2. Picks template, colors, fonts, and sections from your product description
-3. Writes SEO-optimized copy and compliance pages
-4. Publishes with locale variants for your target markets
-5. Returns the live URL
+[The live specification](https://appai.info/spec) is the source of truth, with topic pages for API, style, pages, sections, languages, tools and apps. [llms-full.txt](https://appai.info/llms-full.txt) is the complete single-file fallback. This repository distributes the skill as a Claude Code plugin; the canonical source lives in [`KYCgrayson/APPAI`, under `skills/appai-publish/`](https://github.com/KYCgrayson/APPAI/tree/main/skills/appai-publish). Changes merged there are mirrored into this repo automatically.
 
-## Source
+## Updating
 
-The canonical source lives in the main AppAI repo at [`KYCgrayson/APPAI`](https://github.com/KYCgrayson/APPAI) under `skills/appai-publish/`. This repo mirrors it for plugin distribution.
+Users who installed an earlier version can run `/plugin marketplace update appai-skill` to get the new version.
 
-## License
-
-MIT
+License: MIT
