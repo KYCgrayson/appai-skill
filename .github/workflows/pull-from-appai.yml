@@ -1,0 +1,42 @@
+name: Pull skill from APPAI
+
+# Keeps skills/appai-publish identical to KYCgrayson/APPAI main.
+# Runs here with this repo's own token, so no cross-repo secret is needed.
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-from-appai
+  cancel-in-progress: false
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch APPAI main
+        run: git clone --depth 1 https://github.com/KYCgrayson/APPAI.git /tmp/appai
+
+      - name: Copy skill
+        run: |
+          test -f /tmp/appai/skills/appai-publish/SKILL.md
+          rsync -a --delete /tmp/appai/skills/appai-publish/ skills/appai-publish/
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "Already in sync."
+            exit 0
+          fi
+          sha=$(git -C /tmp/appai rev-parse --short HEAD)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A skills/appai-publish
+          git commit -m "Sync skill from KYCgrayson/APPAI@${sha}"
+          git push
